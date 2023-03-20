@@ -1,5 +1,6 @@
 import photo from "../../assets/Www.png";
 import "../../sass/components/Todo/TodoTime.sass";
+import Time from "./Time";
 const TodoTime = () => {
   return (
     <div className="TodoTime">
@@ -7,7 +8,7 @@ const TodoTime = () => {
         <img src={photo} alt="" />
       </div>
       <div className="DigitalClockContainer">
-        <h1>Digital Clock</h1>
+        <Time />
       </div>
     </div>
   );
