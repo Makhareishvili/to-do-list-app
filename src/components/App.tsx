@@ -1,11 +1,9 @@
 import "../sass/components/App.sass";
+import Todo from "./Todo/Todo";
 const App = () => {
   return (
     <div className="App">
-      <div className="mainContainer">
-        <p>Y</p>
-        <p>Y</p>
-      </div>
+      <Todo />
     </div>
   );
 };
