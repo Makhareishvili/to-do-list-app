@@ -1,9 +1,14 @@
 import "../sass/components/App.sass";
-import Todo from "./Todo/Todo";
+import TodoTime from "./Todo/TodoTime";
+import "../sass/components/Todo/TodoList.sass";
+import TodoList from "./Todo/TodoList";
 const App = () => {
   return (
     <div className="App">
-      <Todo />
+      <div className="TodoList">
+        <TodoTime />
+        <TodoList />
+      </div>
     </div>
   );
 };
