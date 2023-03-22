@@ -1,38 +1,55 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import TodoForm from "./TodoForm";
-import { RiCloseCircleLine } from "react-icons/ri";
-import { ITodo, TodoProps } from "../../interfaces/TodoList";
-const Todo = ({ todos, removeTodo, updateTodo }: TodoProps) => {
-  const [edit, setEdit] = useState<{ id: number | null; value: string }>({
+import TodoListItem from "./TodoListItem";
+import "../../sass/components/Todo/Todo.sass";
+import { ITodos, IUpdateTodos } from "../../interfaces/Todo";
+const Todo = (): JSX.Element => {
+  const [todos, setTodos] = useState<ITodos[]>([]);
+  const [update, setUpdate] = useState<IUpdateTodos>({
     id: null,
     value: "",
   });
-  const submitUpdate = (value: ITodo) => {
-    updateTodo(edit.id!, value);
-    setEdit({
-      id: null,
-      value: "",
-    });
+  const handleSetTodos = (props: ITodos) => {
+    setTodos([props, ...todos]);
   };
-  if (edit.id !== null) {
-    return <TodoForm edit={edit} onSubmit={submitUpdate} />;
-  }
+  const handleUpdateTodo = (props: ITodos) => {
+    const updatedTodos = todos.map((item) => {
+      if (item.id === props.id) {
+        return { id: item.id, value: props.value };
+      }
+      return item;
+    });
+    setTodos(updatedTodos);
+    setUpdate({ id: null, value: "" });
+  };
+  const handleDelete = (id: number) => {
+    const updatedTodos = todos.filter((item) => item.id !== id);
+    setTodos(updatedTodos);
+  };
+  const handleSetUpdate = (id: number, value: string) => {
+    setUpdate({ id, value });
+  };
   return (
-    <>
-      {todos.map((todo: ITodo, index: number) => (
-        <div key={index}>
-          <div
-            key={todo.id}
-            onClick={() => setEdit({ id: todo.id, value: todo.text })}
-          >
-            {todo.text}
-          </div>
-          <div>
-            <RiCloseCircleLine onClick={() => removeTodo(todo.id)} />
-          </div>
+    <div className="TodoContainer">
+      <TodoForm
+        handleSetTodos={handleSetTodos}
+        update={update}
+        handleUpdateTodo={handleUpdateTodo}
+      />
+      {!update.id && (
+        <div>
+          {todos.map((item) => (
+            <TodoListItem
+              key={item.id}
+              value={item.value}
+              id={item.id}
+              handleDelete={handleDelete}
+              handleSetUpdate={handleSetUpdate}
+            />
+          ))}
         </div>
-      ))}
-    </>
+      )}
+    </div>
   );
 };
 export default Todo;

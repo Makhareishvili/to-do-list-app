@@ -1,0 +1,35 @@
+@use "../../abstracts/colors.sass" as c
+@use "../../abstracts/fonts.sass" as f
+.TodoListItemContainer
+    display: flex
+    justify-content: space-between
+    margin: 10px 0
+    border: none
+    padding: 5px 0
+    gap: 5px
+    div:first-of-type
+        width: 100%
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        cursor: pointer
+        overflow-wrap: anywhere
+        h2
+            color: c.$todo-text-color
+            font-size: f.$font-todo-text-size
+        p
+            font-size: f.$font-todo-time-size
+            width: fit-content
+            color: c.$todo-time-color
+            line-height: 1.8em
+    div:last-of-type
+        display: flex
+        align-items: center
+.deleteIcon
+    font-size: f.$font-delete-icon-size
+    cursor: pointer
+    path
+        stroke: c.$delete-icon
+    &:hover
+        path
+            stroke: c.$delete-icon-hover

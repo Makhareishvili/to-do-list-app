@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../../sass/components/Todo/Time.sass";
+import "../../sass/components/Time/Time.sass";
 const MONTH = [
   "January",
   "February",

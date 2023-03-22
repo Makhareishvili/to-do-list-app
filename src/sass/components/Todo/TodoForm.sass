@@ -1,1 +1,30 @@
-
+@use "../../abstracts/colors.sass" as c
+@use "../../abstracts/fonts.sass" as f
+.formContainer
+    display: flex
+    width: 100%
+    input
+        background: none
+        flex: .8
+        height: 40px
+        border: none
+        outline: none
+        border-bottom: 1px solid c.$add-button-color
+        color: c.$todo-text-color
+        font-size: f.$font-todo-text-size
+    button
+        flex: 0.3
+        background-color: c.$add-button-color
+        border: none
+        color: white
+        outline: none
+        border: none
+        font-size: f.$font-btn-size
+        border-top-left-radius: 25px
+        border-bottom-right-radius: 25px
+        cursor: pointer
+        font-family: f.$font-family-add-button
+        letter-spacing: .03em
+        &:hover
+            color: c.$time-color
+            transition: .3s

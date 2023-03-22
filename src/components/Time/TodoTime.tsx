@@ -1,5 +1,5 @@
 import photo from "../../assets/Www.png";
-import "../../sass/components/Todo/TodoTime.sass";
+import "../../sass/components/Time/TodoTime.sass";
 import Time from "./Time";
 const TodoTime = () => {
   return (
