@@ -1,5 +1,6 @@
 @use "../../abstracts/colors" as c
 @use "../../abstracts/fonts" as f
+@use "../../abstracts/breakpoints.sass" as b
 .container
     display: flex
     flex-direction: column
@@ -8,7 +9,7 @@
         display: flex
         justify-content: flex-end
         h1
-            font-size: 4em
+            font-size: f.$font-time-hour-minute-size
     div:last-of-type
         display: flex
         h2
@@ -24,3 +25,11 @@ span
     font-size: f.$font-time-colon-size
     margin: 0 4px
     font-weight: bold
+@media (max-width: b.$layout-breakpoint-small)
+    .container
+        div:first-of-type
+            h1
+                font-size: f.$font-time-hour-minute-size-sm
+        div:last-of-type
+            h2
+                font-size: f.$font-time-date-size-sm

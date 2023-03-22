@@ -1,5 +1,6 @@
 @use "../../abstracts/colors.sass" as c
 @use "../../abstracts/fonts.sass" as f
+@use "../../abstracts/breakpoints.sass" as b
 .TodoListItemContainer
     display: flex
     justify-content: space-between
@@ -25,6 +26,12 @@
     div:last-of-type
         display: flex
         align-items: center
+    @media (max-width: b.$layout-breakpoint-small)
+        div:first-of-type
+            h2
+                font-size: f.$font-todo-text-size-sm
+            p
+                font-size: f.$font-todo-time-size
 .deleteIcon
     font-size: f.$font-delete-icon-size
     cursor: pointer

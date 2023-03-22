@@ -1,5 +1,6 @@
 @use "../../abstracts/colors.sass" as c
 @use "../../abstracts/fonts.sass" as f
+@use "../../abstracts/breakpoints.sass" as b
 .formContainer
     display: flex
     width: 100%
@@ -28,3 +29,8 @@
         &:hover
             color: c.$time-color
             transition: .3s
+    @media (max-width: b.$layout-breakpoint-small)
+        input
+            font-size: f.$font-todo-text-size-sm
+        button
+            font-size: f.$font-btn-size-sm
